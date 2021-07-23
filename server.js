@@ -11,6 +11,9 @@ const bodyParser = require('express').json;
 app.use(bodyParser());
 // app.use(express.json());
 
+const cors = require('cors');
+app.use(cors);
+
 app.use('/user', UserRouter)
 
 app.listen(port, () => {
