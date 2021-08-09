@@ -79,7 +79,7 @@ router.post('/signup', (req, res) => {
             message: 'An error occurred while checking email account!'
         })
     })
-})
+});
 
 // Sign in
 router.post('/signin', (req, res) => {
@@ -125,6 +125,46 @@ router.post('/signin', (req, res) => {
             message: 'An error occurred while checking email account!'
         })
     })
-})
+});
+
+// Update User Location
+router.post('/update/location', async (req, res) => {
+    let {_id, location} = req.body;
+
+    await User.findByIdAndUpdate(_id, {
+        location: location
+    }).then(result => {
+        res.json({
+            status: 'SUCCESS',
+            message: 'Update successful',
+        })
+    }).catch(err => {
+        console.log(err);
+        res.json({
+            status: 'FAILED',
+            message: 'An error occurred while updating user information!'
+        })
+    });
+});
+
+// Update User Profile Image
+router.post('/update/img', async (req, res) => {
+    let {_id, img} = req.body;
+
+    await User.findByIdAndUpdate(_id, {
+        img: img
+    }).then(result => {
+        res.json({
+            status: 'SUCCESS',
+            message: 'Update successful',
+        })
+    }).catch(err => {
+        console.log(err);
+        res.json({
+            status: 'FAILED',
+            message: 'An error occurred while updating user information!'
+        })
+    });
+});
 
 module.exports = router;
