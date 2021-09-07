@@ -4,7 +4,6 @@ const router = express.Router();
 // Mongodb user model
 const User = require('./../models/User');
 
-
 // Password handler
 const bcrypt = require('bcrypt');
 
@@ -95,7 +94,7 @@ router.post('/signin', (req, res) => {
                 if (result) {
                     // Password match
                     res.json({
-                        status: 'SUCCESSFUL',
+                        status: 'SUCCESS',
                         message: 'Signin successful',
                         data: data
                     })
