@@ -35,7 +35,7 @@ router.post('/', (req, res) => {
 
 // Get a user's postings
 router.get('/', (req, res) => {
-    Post.find({ username: req.query.user }).then(result => {
+    Post.find(req.query).then(result => {
         res.json({
             status: 'SUCCESS',
             message: 'Your posts are found!',
