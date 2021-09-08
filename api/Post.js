@@ -22,13 +22,31 @@ router.post('/', (req, res) => {
     newPost.save().then(result => {
         res.json({
             status: 'SUCCESS',
-            message: 'Signup successful',
+            message: 'Your ad have been successefully posted!',
             data: result
         })
     }).catch(err => {
         res.json({
             status: 'FAILED',
             message: 'An error occurred while saving your post!'
+        })
+    })
+});
+
+// Get a user's postings
+router.get('/', (req, res) => {
+
+    Post.find({ username: req.params.username }).then(result => {
+        console.log(result);
+        res.json({
+            status: 'SUCCESS',
+            message: 'Your posts are found!',
+            data: result
+        })
+    }).catch(err => {
+        res.json({
+            status: 'FAILED',
+            message: 'An error occurred while looking for your post!'
         })
     })
 });
